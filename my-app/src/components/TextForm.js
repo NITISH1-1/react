@@ -2,8 +2,8 @@ import React, {useState} from "react";
 
 export default function TextForm(props) {
   const handelOnClick = () => {
-    console.log('being clicked')
-    setText("You have clicked on handle");
+    let newText = text.toUpperCase();
+    setText(newText);
   }
 
   const handleOnChange = () => {
