@@ -16,6 +16,11 @@ export default function TextForm(props) {
     setText(event.target.value);
   }
 
+  const handelExtraSpaces = () => {
+    let newText = text.split(/[ ]+/);
+    setText(newText.join(" "));
+  }
+
   const [text, setText] = useState("");
   return (
     <>
@@ -33,6 +38,8 @@ export default function TextForm(props) {
       <div className="flex">
       <button className="btn btn-primary cursor mx-1" onClick={handelOnClick} >Convert to Uppercase</button>
       <button className="btn btn-primary cursor mx-1" onClick={handelOnClickLo} >Convert to Lowercase</button>
+      <button className="btn btn-primary cursor mx-1" onClick={handelExtraSpaces} >Remove Extra Spaces</button>
+
       </div>
       <div className="container my-3">
         <h2>Your Text Summary</h2>
