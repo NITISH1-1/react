@@ -37,17 +37,17 @@ export default function TextForm(props) {
         ></textarea>
       </div>
       <div className="flex">
-      <button className="btn btn-primary cursor mx-1" onClick={handelOnClick} >Convert to Uppercase</button>
-      <button className="btn btn-primary cursor mx-1" onClick={handelOnClickLo} >Convert to Lowercase</button>
-      <button className="btn btn-primary cursor mx-1" onClick={handelExtraSpaces} >Remove Extra Spaces</button>
+      <button disabled={text.length === 0} className="btn btn-primary cursor mx-1 my-1" onClick={handelOnClick} >Convert to Uppercase</button>
+      <button disabled={text.length === 0} className="btn btn-primary cursor mx-1 my-1" onClick={handelOnClickLo} >Convert to Lowercase</button>
+      <button disabled={text.length === 0} className="btn btn-primary cursor mx-1 my-1" onClick={handelExtraSpaces} >Remove Extra Spaces</button>
 
       </div>
       <div className="container my-3" style={{color: props.mode === 'light' ? 'black': 'white'}}>
         <h2 >Your Text Summary</h2>
-        <p>{text.split(" ").length} words and {text.length} characters</p>
-        <p>{0.008 * text.split(" ").length} Minutes Read</p>
+        <p>{text.split(" ").filter((element) => {return element.length!==0}).length} words and {text.length} characters</p>
+        <p>{0.008 * text.split(" ").filter((element) => {return element.length!==0}).length} Minutes Read</p>
         <h2>Preview</h2>
-        <p>{text.length > 0 ? text : 'Etner something above to preview it'}</p>
+        <p>{text.length > 0 ? text : 'Enter something above to preview it'}</p>
       </div>
     </>
   );

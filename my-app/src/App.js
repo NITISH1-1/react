@@ -16,10 +16,16 @@ function App() {
       setMode("dark");
       document.body.style.backgroundColor = "#042842";
       showAlert("Dark mode has been enabled", "success");
+      setTimeout(() => {
+        setAlert(null);
+      }, 1500)
     } else {
       setMode("light");
       document.body.style.backgroundColor = "white";
       showAlert("Light mode has been enabled", "success");
+      setTimeout(() => {
+        setAlert(null);
+      }, 1500)
     }
   };
 
@@ -43,12 +49,12 @@ function App() {
         <Alert className="my-3" alert={alert} />
         <div className="container my-3">
           <Routes>
-            <Route exact path="/about" element={<About />}/>
+            <Route exact path="/about" element={<About mode={mode} />}/>
             <Route exact path="/" element={
               <TextForm
                 showAlert={showAlert}
                 mode={mode}
-                heading="Enter the text to analyze below"
+                heading="Try Text Utility - Word Counter, Character Counter, Remove extra spaces"
               />
             }/>
           </Routes>
