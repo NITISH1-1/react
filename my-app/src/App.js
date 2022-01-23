@@ -6,7 +6,7 @@ import About from "./components/About";
 
 import { useState } from "react";
 
-import { Switch, Routes, Route, Link, Router } from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState("light");
@@ -33,7 +33,7 @@ function App() {
   };
   return (
     <>
-      <Router>
+      <BrowserRouter>
         <Navbar
           title="TextUtils"
           mode={mode}
@@ -42,20 +42,18 @@ function App() {
         />
         <Alert className="my-3" alert={alert} />
         <div className="container my-3">
-          <Switch>
-            <Route path="/about">
-              <About />
-            </Route>
-            <Route path="/">
+          <Routes>
+            <Route exact path="/about" element={<About />}/>
+            <Route exact path="/" element={
               <TextForm
                 showAlert={showAlert}
                 mode={mode}
                 heading="Enter the text to analyze below"
               />
-            </Route>
-          </Switch>
+            }/>
+          </Routes>
         </div>
-      </Router>
+      </BrowserRouter>
     </>
   );
 }
